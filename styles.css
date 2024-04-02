@@ -7,23 +7,25 @@ body {
   font-family: 'Hero New', sans-serif;
   display: flex;
   flex-direction: column;
-}
-
-.header,
-.footer {
-  background-color: #2a2438;
-  color: #F9FAF8;
+  background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
 }
 
 .header {
   display: flex;
   justify-content: center;
+  color: #222831;
+}
+
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #222831;
+  color: #EEEEEE;
   height: 40px;
   font-size: 12px;
 }
@@ -37,8 +39,9 @@ body {
 .content-container {
     display: flex;
     justify-content: space-around;
-    padding: 64px;
-    margin: 64px;
+    padding: 0px;
+    gap: 64px;
+    margin: 0px 64px 64px 64px;
     width: 1200px;
 }
 
@@ -52,10 +55,17 @@ body {
 .controls-container {
     /* flex: 1; */
     flex-direction: column;
+    justify-content: flex-start;
+    gap: 32px;
+    padding-top: 0px;
 }
 
 .grid-container {
+    flex: 2;
     border-style: solid;
+    padding: 0px;
+    max-width: 960px;
+    height: auto;
 }
 
 button {
@@ -63,17 +73,23 @@ button {
   border-radius: 4px;
   width: 200px;
   height: 50px;
-  background: #5b4c80;
-  color: #dbd8e3;
-  margin: 16px 0;
+  background: none;
+  color: #222831;
+  margin: 0;
   padding: 8px 32px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   transition: background-color 0.3s;
-}
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}   
 
 button:hover {
-  background-color: #352f44;
+  background-color: #EEEEEE;
+}
+
+#slider {
+    width: 200px;
+    height: 50px;
 }
 
 ul {
