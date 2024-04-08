@@ -4,9 +4,17 @@ function rangeSlide(value) {
     document.getElementById('rangeValue').innerHTML = `${value}x${value}`;
     console.log(value)
     if (value != lastValue) {
+        const gridButton = document.getElementById('grid-button');
+        const isGridToggledOn = gridButton.classList.contains('toggled-on');
+        
         createGrid(value);
         lastValue = value;
-}   }
+        
+        if (isGridToggledOn) {
+            toggleGridOutline();
+        }
+    }  
+} 
 
 function createGrid(gridSize) {
     const container = document.querySelector('.grid-container');
