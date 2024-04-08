@@ -12,6 +12,7 @@ function rangeSlide(value) {
         
         if (isGridToggledOn) {
             toggleGridOutline();
+            
         }
     }  
 } 
