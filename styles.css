@@ -81,6 +81,32 @@ h1 {
   outline: 1px solid #222831;
 }
 
+#color-picker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  width: 100px;
+  height: 100px;
+  border-style: none;
+  cursor: pointer;
+}
+
+#color-picker::-webkit-color-swatch {
+  border-radius: 50%;
+  box-shadow: -10px -10px 15px rgba(255,255,255,0.5),
+            10px 10px 15px rgba(70,70,70,0.12);
+  border-style: none;
+}
+
+#color-picker::-moz-color-swatch {
+  border-radius: 50%;
+  box-shadow: -10px -10px 15px rgba(255,255,255,0.5),
+            10px 10px 15px rgba(70,70,70,0.12);
+  border-style: none;}
+
 button {
   border: none;
   border-radius: 4px;

@@ -12,7 +12,7 @@ function rangeSlide(value) {
         
         if (isGridToggledOn) {
             toggleGridOutline();
-            
+
         }
     }  
 } 
@@ -46,3 +46,4 @@ function toggleGridOutline() {
     const gridButton = document.getElementById('grid-button');
     gridButton.classList.toggle('toggled-on');
 }
+
