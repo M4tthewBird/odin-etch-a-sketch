@@ -22,3 +22,18 @@ function createGrid(gridSize) {
         }
     }
 }
+
+/* This ensures that the grid is created immediately*/
+document.addEventListener("DOMContentLoaded", function() {
+    createGrid(lastValue);
+});
+
+function toggleGridOutline() {
+    const gridCells = document.querySelectorAll('.grid-cell');
+    gridCells.forEach(cell => {
+        cell.classList.toggle('outlined');
+    });
+
+    const gridButton = document.getElementById('grid-button');
+    gridButton.classList.toggle('toggled-on');
+}

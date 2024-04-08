@@ -72,9 +72,13 @@ h1 {
 .grid-cell {
   width: calc(100% / var(--rangeValue)); /* Set width dynamically based on rangeValue */
   height: calc(100% / var(--rangeValue)); /* Set height dynamically based on rangeValue */
-  background-color: #ccc;
-  border: 1px solid #888;
+  background-color: white;
+  border: none;
   box-sizing: border-box;
+}
+
+.grid-cell.outlined {
+  outline: 1px solid #222831;
 }
 
 button {
@@ -94,6 +98,11 @@ button {
 
 button:hover {
   background-color: #EEEEEE;
+}
+
+#grid-button.toggled-on {
+  background-color: #222831;
+  color: #EEEEEE;
 }
 
 /* slider style */
