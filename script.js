@@ -28,6 +28,10 @@ function createGrid(gridSize) {
             const div = document.createElement('div');
             div.classList.add('grid-cell');
             container.appendChild(div);
+
+            div.addEventListener('mousedown', function() {
+                darkenGridCell(this);
+            });
         }
     }
 }
@@ -36,6 +40,19 @@ function createGrid(gridSize) {
 document.addEventListener("DOMContentLoaded", function() {
     createGrid(lastValue);
 });
+
+function darkenGridCell(cell) {
+    let opacity = parseFloat(cell.style.backgroundColor.slice(-4, -1));
+    opacity = isNaN(opacity) ? 0 : opacity;
+    opacity += 0.1;
+
+    if (opacity > 1.0) {
+        opacity = 1.0;
+    }
+
+    cell.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+}
+
 
 function toggleGridOutline() {
     const gridCells = document.querySelectorAll('.grid-cell');
@@ -46,4 +63,5 @@ function toggleGridOutline() {
     const gridButton = document.getElementById('grid-button');
     gridButton.classList.toggle('toggled-on');
 }
+
 
