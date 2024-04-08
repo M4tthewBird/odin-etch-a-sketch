@@ -17,6 +17,23 @@ function rangeSlide(value) {
     }  
 } 
 
+let isDrawing = false;
+
+function startDrawing() {
+    event.preventDefault(); // Prevent default drag behavior
+    isDrawing = true;
+}
+
+function stopDrawing() {
+    isDrawing = false;
+}
+
+function draw(cell) {
+    if (isDrawing) {
+        darkenGridCell(cell);
+    }
+}
+
 function createGrid(gridSize) {
     const container = document.querySelector('.grid-container');
     container.style.setProperty('--rangeValue', gridSize); // Set CSS variable
@@ -29,8 +46,22 @@ function createGrid(gridSize) {
             div.classList.add('grid-cell');
             container.appendChild(div);
 
+            //div.style.backgroundColor = 'rgba(0, 0, 0, 0.0)';
+
+            /* Use mousedown to start drawing */
             div.addEventListener('mousedown', function() {
-                darkenGridCell(this);
+                startDrawing();
+                draw(this);
+            });
+
+            /* Use mousemove to continue drawing */
+            div.addEventListener('mousemove', function() {
+                draw(this);
+            });
+
+            /* Use mouseup to stop drawing */
+            div.addEventListener('mouseup', function() {
+                stopDrawing();
             });
         }
     }
@@ -43,14 +74,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function darkenGridCell(cell) {
     let opacity = parseFloat(cell.style.backgroundColor.slice(-4, -1));
-    opacity = isNaN(opacity) ? 0 : opacity;
-    opacity += 0.1;
+    // console.log(cell.style.backgroundColor)
+    console.log(cell.style.backgroundColor.slice(-4, -1))
+    console.log(parseFloat(cell.style.backgroundColor.slice(-4, -1)))
 
-    if (opacity > 1.0) {
+    //console.log(opacity)
+    
+    if (isNaN(opacity)) {
+        opacity = 0;
+    } 
+
+    if (opacity > 0.9) {
         opacity = 1.0;
     }
-
-    cell.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+    
+    setTimeout(function() {
+        opacity += 0.1;
+        cell.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+    }, 50);
 }
 
 

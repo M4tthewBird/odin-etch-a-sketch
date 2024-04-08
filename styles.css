@@ -70,7 +70,6 @@ h1 {
 .grid-cell {
   width: calc(100% / var(--rangeValue)); /* Set width dynamically based on rangeValue */
   height: calc(100% / var(--rangeValue)); /* Set height dynamically based on rangeValue */
-  background-color: white;
   border: none;
   box-sizing: border-box;
 }
