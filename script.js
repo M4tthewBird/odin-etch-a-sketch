@@ -94,8 +94,6 @@ function darkenGridCell(cell) {
     }, 50);
 }
 
-
-
 function toggleGridOutline() {
     const gridCells = document.querySelectorAll('.grid-cell');
     gridCells.forEach(cell => {
@@ -104,6 +102,19 @@ function toggleGridOutline() {
 
     const gridButton = document.getElementById('grid-button');
     gridButton.classList.toggle('toggled-on');
+    
 }
 
+function clearCells() {
+    const gridCells = document.querySelectorAll('.grid-cell');
+    gridCells.forEach(cell => {
+        cell.style.backgroundColor = 'rgba(0, 0, 0, 0.0)';
+    });
 
+    const clearButton = document.getElementById('clear-button');
+    clearButton.classList.add('clicked');
+
+    setTimeout(() => {
+        clearButton.classList.remove('clicked');
+    }, 500);
+}

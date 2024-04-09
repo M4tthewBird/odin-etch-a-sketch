@@ -126,6 +126,11 @@ button:hover {
   color: #EEEEEE;
 }
 
+#clear-button.clicked {
+  background-color: #222831;
+  color: #EEEEEE;
+}
+
 /* slider style */
 
 .range-slider {
