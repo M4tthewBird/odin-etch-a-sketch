@@ -123,7 +123,8 @@ button:hover {
 }
 
 #grid-button.toggled-on,
-#color-mode-button.toggled-on {
+#color-mode-button.toggled-on,
+#rainbow-mode-button.toggled-on {
   background-color: #222831;
   color: #EEEEEE;
 }

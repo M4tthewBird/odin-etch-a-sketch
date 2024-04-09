@@ -18,6 +18,7 @@ function rangeSlide(value) {
 } 
 
 let isColorModeActive = false;
+let isRainbowModeActive = false;
 let selectedColor = '#000000'; // Default color
 
 function colorUpdater() {
@@ -28,6 +29,11 @@ function colorUpdater() {
 
 function colorMode() {
 
+    if (isRainbowModeActive) {
+        // Turn off color mode if it's active
+        rainbowMode();
+    }
+
     const clearButton = document.getElementById('color-mode-button');
     clearButton.classList.toggle('toggled-on');
 
@@ -37,6 +43,29 @@ function colorMode() {
         // If color mode is deactivated, reset drawing color to black with opacity
         selectedColor = '#000000';
     }
+}
+
+function rainbowMode() {
+
+    if (isColorModeActive) {
+        // Turn off color mode if it's active
+        colorMode();
+    }
+
+    const rainbowButton = document.getElementById('rainbow-mode-button');
+    rainbowButton.classList.toggle('toggled-on');
+
+    isRainbowModeActive = !isRainbowModeActive; // Toggle rainbow mode
+
+    if (!isRainbowModeActive) {
+        // If color mode is deactivated, reset drawing color to black with opacity
+        selectedColor = '#000000';
+    }
+}
+
+function getRandomColor() {
+    // Generate a random hex color
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 let isDrawing = false;
@@ -50,9 +79,14 @@ function stopDrawing() {
     isDrawing = false;
 }
 
+
 function draw(cell) {
     if (isDrawing) {
-        if (isColorModeActive) {
+        if (isRainbowModeActive) {
+            // Generate a random color for each draw
+            selectedColor = getRandomColor();
+            cell.style.backgroundColor = selectedColor;
+        } else if (isColorModeActive) {
             colorUpdater();
             cell.style.backgroundColor = selectedColor;
         } else {
