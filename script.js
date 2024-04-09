@@ -52,11 +52,13 @@ function createGrid(gridSize) {
             div.addEventListener('mousedown', function() {
                 startDrawing();
                 draw(this);
+                console.log("mousedown")
             });
 
             /* Use mousemove to continue drawing */
             div.addEventListener('mousemove', function() {
                 draw(this);
+                console.log("mousemove")
             });
 
             /* Use mouseup to stop drawing */
@@ -84,15 +86,14 @@ function darkenGridCell(cell) {
         opacity = 0;
     } 
 
-    if (opacity > 0.9) {
-        opacity = 1.0;
-    }
-    
+    opacity = Math.min(opacity + 0.1, 0.9); // Increment opacity, capped at 1.0
+
     setTimeout(function() {
-        opacity += 0.1;
+        opacity = Math.min(opacity + 0.1, 0.9); // Increment opacity, capped at 1.0
         cell.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
     }, 50);
 }
+
 
 
 function toggleGridOutline() {
