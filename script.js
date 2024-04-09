@@ -17,6 +17,28 @@ function rangeSlide(value) {
     }  
 } 
 
+let isColorModeActive = false;
+let selectedColor = '#000000'; // Default color
+
+function colorUpdater() {
+    const colorPicker = document.getElementById('color-picker');
+    selectedColor = colorPicker.value;
+    console.log(selectedColor)
+}
+
+function colorMode() {
+
+    const clearButton = document.getElementById('color-mode-button');
+    clearButton.classList.toggle('toggled-on');
+
+    isColorModeActive = !isColorModeActive; // Toggle color mode
+
+    if (!isColorModeActive) {
+        // If color mode is deactivated, reset drawing color to black with opacity
+        selectedColor = '#000000';
+    }
+}
+
 let isDrawing = false;
 
 function startDrawing() {
@@ -30,7 +52,13 @@ function stopDrawing() {
 
 function draw(cell) {
     if (isDrawing) {
-        darkenGridCell(cell);
+        if (isColorModeActive) {
+            colorUpdater();
+            cell.style.backgroundColor = selectedColor;
+        } else {
+            // Draw with black color and opacity
+            darkenGridCell(cell);
+        }
     }
 }
 
@@ -52,13 +80,13 @@ function createGrid(gridSize) {
             div.addEventListener('mousedown', function() {
                 startDrawing();
                 draw(this);
-                console.log("mousedown")
+                // console.log("mousedown")
             });
 
             /* Use mousemove to continue drawing */
             div.addEventListener('mousemove', function() {
                 draw(this);
-                console.log("mousemove")
+                // console.log("mousemove")
             });
 
             /* Use mouseup to stop drawing */

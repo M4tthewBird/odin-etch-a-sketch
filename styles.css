@@ -72,6 +72,7 @@ h1 {
   height: calc(100% / var(--rangeValue)); /* Set height dynamically based on rangeValue */
   border: none;
   box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.0);
 }
 
 .grid-cell.outlined {
@@ -121,7 +122,8 @@ button:hover {
   background-color: #EEEEEE;
 }
 
-#grid-button.toggled-on {
+#grid-button.toggled-on,
+#color-mode-button.toggled-on {
   background-color: #222831;
   color: #EEEEEE;
 }
